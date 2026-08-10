@@ -2,6 +2,7 @@
 const articles = {
   feira: {
     category: 'Empreendedorismo',
+    meta: 'Itapetininga, SP · 4 min de leitura',
     title: '3ª Feira da Mulher Empreendedora fortalece negócios e conexões em Itapetininga',
     lead: 'A programação reuniu artesãs, empreendedoras e mulheres interessadas em fortalecer seus negócios por meio de conhecimento, networking e visibilidade.',
     image: 'assets/images/feira-empreendedora.png',
@@ -10,6 +11,7 @@ const articles = {
   },
   festival: {
     category: 'Agenda local',
+    meta: 'Itapetininga, SP · 4 min de leitura',
     title: 'Primeiro Festival de Flashback promove música, dança e solidariedade em Itapetininga',
     lead: 'Uma tarde dedicada aos sucessos das décadas de 1970, 1980 e 1990 quer unir entretenimento, convivência e responsabilidade social.',
     image: 'assets/images/festival-flashback.png',
@@ -18,6 +20,7 @@ const articles = {
   },
   maria: {
     category: 'Direitos',
+    meta: 'Itapetininga, SP · 5 min de leitura',
     title: 'Lei Maria da Penha completa 20 anos como símbolo da luta pelo fim da violência contra a mulher',
     lead: 'Sancionada em 7 de agosto de 2006, a Lei nº 11.340 marcou uma mudança decisiva no enfrentamento à violência doméstica e familiar no Brasil.',
     image: 'assets/images/maria-da-penha.png',
@@ -26,6 +29,7 @@ const articles = {
   },
   fluxo: {
     category: 'Capacitação',
+    meta: 'Itapetininga, SP · 4 min de leitura',
     title: 'Oficina gratuita ensina empreendedores a organizar o fluxo de caixa em Itapetininga',
     lead: 'A capacitação “Faça Fluxo de Caixa e saiba para onde vai seu dinheiro” será realizada em 26 de agosto, das 13h às 17h.',
     image: 'assets/images/oficina-fluxo-caixa.png',
@@ -35,6 +39,7 @@ const articles = {
   },
   bufala: {
     category: 'Oportunidade',
+    meta: 'Itapetininga, SP · 4 min de leitura',
     title: 'Curso sobre derivados do leite de búfala abre inscrições para mulheres em Itapetininga',
     lead: 'Capacitação prática oferece uma nova qualificação profissional e possibilidades de geração de renda para mulheres.',
     image: 'assets/images/curso-leite-bufala.png',
@@ -92,11 +97,14 @@ function filterCards() {
 
 // 4. MODAL: um único componente recebe o conteúdo da matéria selecionada.
 const modal = document.querySelector('.article-modal');
+let activeArticle = null;
 document.querySelectorAll('[data-open-article]').forEach(button => button.addEventListener('click', () => {
   const article = articles[button.dataset.openArticle];
+  activeArticle = article;
   document.querySelector('#modal-category').textContent = article.category;
   document.querySelector('#modal-title').textContent = article.title;
   document.querySelector('#modal-lead').textContent = article.lead;
+  document.querySelector('#modal-meta').textContent = article.meta;
   document.querySelector('#modal-copy').innerHTML = article.copy;
   document.querySelector('#modal-action').innerHTML = article.action || '';
   const image = document.querySelector('#modal-image'); image.src = article.image; image.alt = article.alt;
@@ -106,6 +114,31 @@ function closeModal() { modal.close(); document.body.classList.remove('modal-ope
 document.querySelector('.modal-close').addEventListener('click', closeModal);
 modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
 modal.addEventListener('close', () => document.body.classList.remove('modal-open'));
+
+// Compartilhamento: usa o recurso nativo do celular; no desktop, copia o link.
+const shareButton = document.querySelector('.share-article');
+const toast = document.querySelector('.toast');
+let toastTimer;
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add('visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('visible'), 2600);
+}
+
+shareButton.addEventListener('click', async () => {
+  const shareData = { title: activeArticle?.title || document.title, text: activeArticle?.lead || '', url: window.location.href };
+  try {
+    if (navigator.share) await navigator.share(shareData);
+    else {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast('Link da matéria copiado!');
+    }
+  } catch (error) {
+    if (error.name !== 'AbortError') showToast('Não foi possível compartilhar agora.');
+  }
+});
 
 // 5. FORMULÁRIO DEMONSTRATIVO: intercepta o envio sem armazenar dados.
 document.querySelector('#newsletter-form').addEventListener('submit', event => {
