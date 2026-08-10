@@ -10,6 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/feira-empreendedora.png">
   <title>Elas em Foco | Itapetininga</title>
+  <link rel="icon" href="assets/images/logo-elas-em-foco.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -20,10 +21,11 @@
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <header class="site-header">
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <div class="announcement">Informação local que fortalece, conecta e transforma.</div>
     <div class="nav-wrap container">
       <a class="brand" href="#inicio" aria-label="Elas em Foco — página inicial">
-        <span class="brand-mark" aria-hidden="true">E</span>
+        <img class="brand-logo" src="assets/images/logo-elas-em-foco.svg" alt="" aria-hidden="true">
         <span><strong>Elas em Foco</strong><small>Itapetininga</small></span>
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu">
@@ -63,7 +65,7 @@
         <p class="section-kicker">Em destaque</p>
         <h2>Histórias locais.<br><em>Impacto real.</em></h2>
         <p>Um espaço para dar visibilidade às mulheres, iniciativas e oportunidades que fazem Itapetininga avançar.</p>
-        <div class="hero-stat"><strong>05</strong><span>histórias para<br>começar</span></div>
+        <div class="hero-stat"><strong data-counter="5">00</strong><span>histórias para<br>começar</span></div>
         <a href="#noticias" class="button button-outline">Explorar notícias</a>
       </aside>
     </section>
@@ -125,7 +127,7 @@
 
   <footer>
     <div class="container footer-grid">
-      <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true">E</span><span><strong>Elas em Foco</strong><small>Itapetininga</small></span></div>
+      <div class="brand footer-brand"><img class="brand-logo" src="assets/images/logo-elas-em-foco.svg" alt="" aria-hidden="true"><span><strong>Elas em Foco</strong><small>Itapetininga</small></span></div>
       <p>Um projeto de portfólio dedicado às mulheres que movimentam Itapetininga.</p>
       <div class="footer-links"><a href="#noticias">Notícias</a><a href="#oportunidades">Oportunidades</a><a href="#sobre">Sobre</a></div>
     </div>
@@ -133,9 +135,13 @@
   </footer>
 
   <dialog class="article-modal" aria-labelledby="modal-title">
+    <div class="modal-progress" aria-hidden="true"><span></span></div>
     <button class="modal-close" aria-label="Fechar matéria">×</button>
     <img id="modal-image" src="" alt="">
     <div class="modal-content"><p id="modal-category" class="section-kicker"></p><h2 id="modal-title"></h2><p id="modal-lead" class="modal-lead"></p><div id="modal-copy"></div><div id="modal-action"></div></div>
   </dialog>
+  <button class="back-to-top" type="button" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"></path></svg>
+  </button>
 </body>
 </html>
