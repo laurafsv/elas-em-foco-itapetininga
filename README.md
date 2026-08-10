@@ -1,4 +1,4 @@
-# Elas em Foco — Itapetininga
+# Elas em Foco - Itapetininga
 
 Portal de notícias responsivo sobre empreendedorismo feminino, capacitação, direitos e agenda local em Itapetininga. Projeto desenvolvido para portfólio com HTML, CSS e JavaScript puros.
 
