@@ -1,3 +1,4 @@
+// 1. DADOS: separar conteúdo da interface facilita adicionar novas matérias.
 const articles = {
   feira: {
     category: 'Empreendedorismo',
@@ -42,6 +43,7 @@ const articles = {
   }
 };
 
+// 2. MENU MOBILE: alterna uma classe CSS e mantém o estado acessível.
 const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('.main-nav');
 menuButton.addEventListener('click', () => {
@@ -53,6 +55,7 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   nav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false');
 }));
 
+// 3. BUSCA E FILTROS: os cards são filtrados sem recarregar a página.
 const searchPanel = document.querySelector('.search-panel');
 const searchInput = document.querySelector('#site-search');
 document.querySelector('.search-toggle').addEventListener('click', () => {
@@ -87,6 +90,7 @@ function filterCards() {
   if (term) document.querySelector('#noticias').scrollIntoView({behavior:'smooth'});
 }
 
+// 4. MODAL: um único componente recebe o conteúdo da matéria selecionada.
 const modal = document.querySelector('.article-modal');
 document.querySelectorAll('[data-open-article]').forEach(button => button.addEventListener('click', () => {
   const article = articles[button.dataset.openArticle];
@@ -103,9 +107,108 @@ document.querySelector('.modal-close').addEventListener('click', closeModal);
 modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
 modal.addEventListener('close', () => document.body.classList.remove('modal-open'));
 
+// 5. FORMULÁRIO DEMONSTRATIVO: intercepta o envio sem armazenar dados.
 document.querySelector('#newsletter-form').addEventListener('submit', event => {
   event.preventDefault();
   document.querySelector('.form-message').textContent = 'Cadastro simulado com sucesso! Obrigada por acompanhar o projeto.';
   event.target.reset();
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+// 6. ANIMAÇÕES DE ROLAGEM
+// IntersectionObserver observa elementos sem executar cálculos a cada pixel rolado.
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealTargets = document.querySelectorAll(
+  '.hero-card, .hero-aside, .section-heading, .news-card, .manifesto-grid > div, .newsletter > *'
+);
+
+revealTargets.forEach((element, index) => {
+  element.classList.add('reveal');
+  if (index === 0 || element.matches('.manifesto-grid > div:first-child')) {
+    element.classList.add('from-left');
+  }
+});
+
+if (!reducedMotion && 'IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target); // anima apenas uma vez
+    });
+  }, { threshold: 0.14 });
+  revealTargets.forEach(element => revealObserver.observe(element));
+} else {
+  revealTargets.forEach(element => element.classList.add('is-visible'));
+}
+
+// 7. CABEÇALHO, PROGRESSO DA PÁGINA E BOTÃO DE VOLTAR AO TOPO
+const header = document.querySelector('.site-header');
+const pageProgress = document.querySelector('.scroll-progress span');
+const backToTop = document.querySelector('.back-to-top');
+
+function updatePageScroll() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+  pageProgress.style.transform = `scaleX(${Math.min(progress, 1)})`;
+  header.classList.toggle('scrolled', window.scrollY > 24);
+  backToTop.classList.toggle('visible', window.scrollY > 650);
+}
+
+window.addEventListener('scroll', updatePageScroll, { passive: true });
+updatePageScroll();
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// 8. NAVEGAÇÃO ATIVA: destaca no menu a seção que está na tela.
+const navLinks = [...document.querySelectorAll('.main-nav a[href^="#"]')];
+const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+      });
+    });
+  }, { rootMargin: '-35% 0px -55%', threshold: 0 });
+  sections.forEach(section => sectionObserver.observe(section));
+}
+
+// 9. CONTADOR: anima o total de histórias quando o destaque aparece.
+const counter = document.querySelector('[data-counter]');
+function animateCounter() {
+  const target = Number(counter.dataset.counter);
+  let current = 0;
+  const timer = setInterval(() => {
+    current += 1;
+    counter.textContent = String(current).padStart(2, '0');
+    if (current >= target) clearInterval(timer);
+  }, 110);
+}
+if (reducedMotion) counter.textContent = String(counter.dataset.counter).padStart(2, '0');
+else setTimeout(animateCounter, 450);
+
+// 10. PROGRESSO DE LEITURA DENTRO DA MATÉRIA.
+const modalProgress = document.querySelector('.modal-progress span');
+modal.addEventListener('scroll', () => {
+  const scrollable = modal.scrollHeight - modal.clientHeight;
+  const progress = scrollable > 0 ? modal.scrollTop / scrollable : 0;
+  modalProgress.style.transform = `scaleX(${Math.min(progress, 1)})`;
+}, { passive: true });
+modal.addEventListener('close', () => {
+  modal.scrollTop = 0;
+  modalProgress.style.transform = 'scaleX(0)';
+});
+
+// 11. PARALLAX SUAVE NO DESTAQUE (somente em dispositivos com mouse).
+const heroCard = document.querySelector('.hero-card');
+const heroImage = heroCard.querySelector('img');
+if (!reducedMotion && window.matchMedia('(pointer: fine)').matches) {
+  heroCard.addEventListener('pointermove', event => {
+    const box = heroCard.getBoundingClientRect();
+    const x = (event.clientX - box.left) / box.width - 0.5;
+    const y = (event.clientY - box.top) / box.height - 0.5;
+    heroImage.style.transform = `scale(1.035) translate(${x * 8}px, ${y * 8}px)`;
+  });
+  heroCard.addEventListener('pointerleave', () => { heroImage.style.transform = ''; });
+}
