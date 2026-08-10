@@ -78,7 +78,7 @@ O arquivo `script.js` está dividido em blocos numerados e comentados.
 
 ### 4. Identidade visual em SVG
 
-A logo está em `assets/images/logo-elas-em-foco.svg`. SVG é um formato vetorial descrito por código: continua nítido em qualquer tamanho, pesa pouco e pode ser usado como logo e favicon. O símbolo combina um “e” contínuo com a ideia de lente, representando informação local colocada em foco.
+A logo está em `assets/images/logo-elas-em-foco.svg`. SVG é um formato vetorial descrito por código: continua nítido em qualquer tamanho, pesa pouco e pode ser usado como logo e favicon. O símbolo não utiliza letras: os quatro cantos representam enquadramento editorial e o ponto central representa as histórias locais colocadas em foco.
 
 ### Exemplo: filtro
 
