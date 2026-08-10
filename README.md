@@ -1,49 +1,124 @@
-# Elas em Foco - Itapetininga
+# Elas em Foco — Itapetininga
 
-Portal de notícias responsivo sobre empreendedorismo feminino, capacitação, direitos e agenda local em Itapetininga. Projeto desenvolvido para portfólio com HTML, CSS e JavaScript puros.
+Portal editorial responsivo sobre empreendedorismo feminino, capacitação, direitos e agenda local em Itapetininga.
+
+🔗 **Site:** https://laurafsv.github.io/elas-em-foco-itapetininga/
+
+## Tecnologias
+
+- **HTML5:** estrutura e semântica;
+- **CSS3:** identidade visual, responsividade e animações;
+- **JavaScript:** dados, eventos, filtros e interatividade;
+- **GitHub Pages:** hospedagem estática gratuita.
+
+O projeto não usa framework. Isso é intencional: HTML, CSS e JavaScript nativos atendem às necessidades com carregamento rápido e deixam os fundamentos mais fáceis de estudar.
 
 ## Funcionalidades
 
-- layout editorial responsivo;
-- busca de matérias por texto;
-- filtros por categoria;
-- leitura das matérias em modal;
-- menu adaptado para celulares;
-- formulário demonstrativo de newsletter;
-- recursos básicos de acessibilidade e SEO;
-- pronto para publicação gratuita no GitHub Pages.
-
-## Como executar
-
-Não há dependências. Abra `index.html` diretamente no navegador ou execute um servidor local:
-
-```bash
-python -m http.server 8000
-```
-
-Depois, acesse `http://localhost:8000`.
-
-## Publicação no GitHub Pages
-
-1. Crie um repositório público chamado `elas-em-foco-itapetininga` no GitHub.
-2. Envie todos os arquivos deste projeto para a branch `main`.
-3. No repositório, abra **Settings → Pages**.
-4. Em **Build and deployment**, escolha **Deploy from a branch**.
-5. Selecione a branch `main`, a pasta `/ (root)` e clique em **Save**.
-6. Aguarde a publicação. O endereço será exibido na própria tela do Pages.
+- busca e filtros por categoria;
+- matérias completas em modal;
+- logo vetorial e favicon próprios;
+- animações acionadas durante a rolagem;
+- indicador de progresso da página e da leitura;
+- menu com seção ativa e versão mobile;
+- contador animado e parallax suave no destaque;
+- botão de voltar ao topo;
+- respeito à preferência de movimento reduzido;
+- formulário demonstrativo de newsletter.
 
 ## Estrutura
 
 ```text
 .
-├── index.html
+├── index.html                 # Conteúdo e estrutura semântica
 ├── assets
-│   ├── css/style.css
-│   ├── js/script.js
-│   └── images/
+│   ├── css/style.css         # Layout, cores e animações
+│   ├── js/script.js          # Comportamentos e matérias
+│   └── images/               # Imagens e logo SVG
+├── .nojekyll                 # Publicação direta no GitHub Pages
 └── README.md
 ```
 
+## Como o projeto funciona
+
+### 1. HTML: estrutura
+
+O `index.html` possui elementos semânticos como `header`, `nav`, `main`, `section`, `article`, `aside` e `footer`. Eles ajudam navegadores, mecanismos de busca e tecnologias assistivas a entender a página.
+
+As matérias visíveis são cards. Os textos completos são exibidos em um único elemento `dialog`, preenchido pelo JavaScript conforme o botão selecionado.
+
+### 2. CSS: apresentação
+
+As cores ficam em variáveis dentro de `:root`:
+
+```css
+:root {
+  --wine: #5b214e;
+  --coral: #ee775f;
+  --paper: #fffcf8;
+}
+```
+
+Assim, alterar a identidade visual não exige procurar a mesma cor em todo o arquivo. O layout usa Grid e Flexbox. As regras `@media` reorganizam os elementos para tablets e celulares.
+
+A classe `.reveal` começa invisível e deslocada. Quando o JavaScript adiciona `.is-visible`, o CSS cria a transição de entrada.
+
+### 3. JavaScript: comportamento
+
+O arquivo `script.js` está dividido em blocos numerados e comentados.
+
+- **DOM:** `querySelector` e `querySelectorAll` localizam elementos da página;
+- **eventos:** `addEventListener` reage a clique, digitação, rolagem e movimento do mouse;
+- **classes:** `classList` conecta o comportamento JavaScript aos estilos CSS;
+- **dados:** o objeto `articles` concentra o conteúdo das matérias;
+- **IntersectionObserver:** detecta quando elementos e seções entram na tela;
+- **Web APIs:** `dialog`, `matchMedia`, `scrollTo` e `setInterval` criam interações sem bibliotecas.
+
+### Exemplo: filtro
+
+Cada card possui `data-category`. Ao clicar em um filtro, o JavaScript compara a categoria escolhida e adiciona ou remove a classe que esconde o card.
+
+```js
+const matches = activeFilter === 'all' || categories.includes(activeFilter);
+card.classList.toggle('hidden-card', !matches);
+```
+
+### Exemplo: animação ao rolar
+
+```js
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+  });
+});
+```
+
+Isso é mais eficiente do que executar cálculos pesados continuamente no evento de rolagem.
+
+## Como executar localmente
+
+Na pasta do projeto, execute:
+
+```bash
+python -m http.server 8000
+```
+
+Depois, abra `http://localhost:8000`.
+
+## Roteiro de estudo sugerido
+
+1. Abra o `index.html` e relacione cada seção com o que aparece na tela.
+2. Altere as variáveis de cor do CSS e observe o resultado.
+3. Use o inspetor do navegador para adicionar e remover classes.
+4. Coloque `console.log()` dentro de um evento de clique.
+5. Cadastre uma nova matéria no objeto `articles` e crie seu card no HTML.
+6. Tente criar uma nova categoria de filtro.
+7. Substitua o formulário demonstrativo por um serviço ou backend somente depois de dominar o fluxo atual.
+
+## Acessibilidade
+
+O projeto contém link para pular ao conteúdo, textos alternativos, atributos ARIA, navegação por teclado e suporte a `prefers-reduced-motion`. Animação deve complementar a experiência, nunca impedir o acesso ao conteúdo.
+
 ## Observação
 
-O formulário de newsletter é apenas demonstrativo e não armazena dados. As matérias e imagens foram fornecidas para composição do projeto.
+O formulário é demonstrativo e não armazena dados. As matérias e fotografias foram fornecidas para a composição deste projeto de portfólio.
