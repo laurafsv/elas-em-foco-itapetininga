@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Notícias, oportunidades e histórias de mulheres que movimentam Itapetininga.">
+  <meta name="theme-color" content="#5b214e">
+  <meta property="og:title" content="Elas em Foco | Itapetininga">
+  <meta property="og:description" content="Empreendedorismo, oportunidades, direitos e agenda para mulheres de Itapetininga.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/feira-empreendedora.png">
+  <title>Elas em Foco | Itapetininga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="announcement">Informação local que fortalece, conecta e transforma.</div>
+    <div class="nav-wrap container">
+      <a class="brand" href="#inicio" aria-label="Elas em Foco — página inicial">
+        <span class="brand-mark" aria-hidden="true">E</span>
+        <span><strong>Elas em Foco</strong><small>Itapetininga</small></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
+        <a href="#noticias">Notícias</a>
+        <a href="#oportunidades">Oportunidades</a>
+        <a href="#sobre">Sobre</a>
+        <button class="search-toggle" type="button" aria-label="Abrir busca">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+          Buscar
+        </button>
+      </nav>
+    </div>
+    <div class="search-panel" hidden>
+      <div class="container search-inner">
+        <label for="site-search">O que você procura?</label>
+        <div><input id="site-search" type="search" placeholder="Ex.: curso, oficina, empreendedorismo..."><button class="search-close" type="button" aria-label="Fechar busca">×</button></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section id="inicio" class="hero container">
+      <article class="hero-card" data-category="empreendedorismo" data-search="feira mulher empreendedora moda autoral artesanal marketing digital todos por elas">
+        <img src="assets/images/feira-empreendedora.png" alt="Mulheres reunidas em evento de empreendedorismo em Itapetininga">
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <span class="eyebrow eyebrow-light">Empreendedorismo</span>
+          <h1>Feira da Mulher Empreendedora fortalece negócios e conexões em Itapetininga</h1>
+          <p>Moda autoral, marketing digital e networking abrem espaço para o protagonismo feminino.</p>
+          <button class="text-link light" data-open-article="feira">Ler matéria <span aria-hidden="true">↗</span></button>
+        </div>
+      </article>
+      <aside class="hero-aside">
+        <p class="section-kicker">Em destaque</p>
+        <h2>Histórias locais.<br><em>Impacto real.</em></h2>
+        <p>Um espaço para dar visibilidade às mulheres, iniciativas e oportunidades que fazem Itapetininga avançar.</p>
+        <div class="hero-stat"><strong>05</strong><span>histórias para<br>começar</span></div>
+        <a href="#noticias" class="button button-outline">Explorar notícias</a>
+      </aside>
+    </section>
+
+    <section id="noticias" class="news-section container section-space">
+      <div class="section-heading">
+        <div><p class="section-kicker">Últimas notícias</p><h2>Informação para <em>ir além</em></h2></div>
+        <p>Conteúdo local sobre oportunidades, capacitação, direitos e iniciativas que valorizam as mulheres.</p>
+      </div>
+      <div class="filter-bar" role="group" aria-label="Filtrar matérias">
+        <button class="filter active" data-filter="all" aria-pressed="true">Todas</button>
+        <button class="filter" data-filter="empreendedorismo" aria-pressed="false">Empreendedorismo</button>
+        <button class="filter" data-filter="capacitacao" aria-pressed="false">Capacitação</button>
+        <button class="filter" data-filter="direitos" aria-pressed="false">Direitos</button>
+        <button class="filter" data-filter="agenda" aria-pressed="false">Agenda</button>
+      </div>
+
+      <div class="news-grid">
+        <article class="news-card wide" data-category="agenda" data-search="festival flashback música dança solidariedade leite fundo social">
+          <div class="card-image"><img src="assets/images/festival-flashback.png" alt="Cartaz colorido do Primeiro Festival Flashback de Itapetininga" loading="lazy"><span class="image-tag">Agenda</span></div>
+          <div class="card-body"><p class="meta">Cultura & solidariedade · 4 min</p><h3>Primeiro Festival de Flashback promove música, dança e solidariedade</h3><p>Evento reúne sucessos das décadas de 70, 80 e 90 e incentiva a doação de leite ao Fundo Social.</p><button class="text-link" data-open-article="festival">Continuar lendo <span aria-hidden="true">→</span></button></div>
+        </article>
+
+        <article class="news-card" data-category="direitos" data-search="lei maria da penha 20 anos violência mulher proteção agosto lilás">
+          <div class="card-image portrait"><img src="assets/images/maria-da-penha.png" alt="Maria da Penha sorrindo em seu retrato" loading="lazy"><span class="image-tag">Direitos</span></div>
+          <div class="card-body"><p class="meta">Agosto Lilás · 5 min</p><h3>Lei Maria da Penha completa 20 anos como símbolo de proteção</h3><p>Duas décadas de uma legislação que transformou o enfrentamento à violência contra a mulher.</p><button class="text-link" data-open-article="maria">Continuar lendo <span aria-hidden="true">→</span></button></div>
+        </article>
+
+        <article id="oportunidades" class="news-card" data-category="capacitacao empreendedorismo" data-search="oficina fluxo caixa sebrae dinheiro gestão financeira gratuita 26 agosto">
+          <div class="card-image portrait poster"><img src="assets/images/oficina-fluxo-caixa.png" alt="Cartaz da oficina gratuita de fluxo de caixa" loading="lazy"><span class="image-tag">Capacitação</span></div>
+          <div class="card-body"><p class="meta">26 de agosto · 4 min</p><h3>Oficina gratuita ensina empreendedores a organizar o fluxo de caixa</h3><p>Capacitação do Sebrae ajuda participantes a entender receitas, despesas e decisões do negócio.</p><button class="text-link" data-open-article="fluxo">Continuar lendo <span aria-hidden="true">→</span></button></div>
+        </article>
+
+        <article class="news-card wide reverse" data-category="capacitacao empreendedorismo" data-search="curso leite búfala mulheres renda qualificação sebrae senai ceprom derivados">
+          <div class="card-image"><img src="assets/images/curso-leite-bufala.png" alt="Cartaz do curso sobre produtos derivados do leite de búfala" loading="lazy"><span class="image-tag">Oportunidade</span></div>
+          <div class="card-body"><p class="meta">27 de agosto a 8 de setembro · 4 min</p><h3>Curso sobre derivados do leite de búfala abre inscrições para mulheres</h3><p>Formação prática incentiva qualificação, autonomia financeira e novas fontes de renda.</p><button class="text-link" data-open-article="bufala">Continuar lendo <span aria-hidden="true">→</span></button></div>
+        </article>
+      </div>
+      <p class="empty-state" hidden>Nenhuma matéria encontrada. Tente outro termo ou categoria.</p>
+    </section>
+
+    <section id="sobre" class="manifesto section-space">
+      <div class="container manifesto-grid">
+        <div><p class="section-kicker light-kicker">Nossa essência</p><h2>Quando uma mulher avança,<br><em>uma cidade inteira se movimenta.</em></h2></div>
+        <div><p>O Elas em Foco nasce para reunir informação útil e dar espaço a quem empreende, cria, lidera e transforma Itapetininga todos os dias.</p><p>Mais que um portal de notícias, este é um ponto de encontro entre ideias, oportunidades e histórias reais.</p></div>
+      </div>
+    </section>
+
+    <section class="newsletter container section-space">
+      <div><p class="section-kicker">Fique por dentro</p><h2>Boas notícias,<br><em>direto no seu e-mail.</em></h2></div>
+      <form id="newsletter-form">
+        <label for="email">Seu melhor e-mail</label>
+        <div><input id="email" type="email" placeholder="voce@exemplo.com" required><button class="button button-primary" type="submit">Quero receber</button></div>
+        <small>Projeto demonstrativo de portfólio. Nenhum dado é armazenado.</small>
+        <p class="form-message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true">E</span><span><strong>Elas em Foco</strong><small>Itapetininga</small></span></div>
+      <p>Um projeto de portfólio dedicado às mulheres que movimentam Itapetininga.</p>
+      <div class="footer-links"><a href="#noticias">Notícias</a><a href="#oportunidades">Oportunidades</a><a href="#sobre">Sobre</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> Elas em Foco</span><span>Feito com propósito em Itapetininga, SP.</span></div>
+  </footer>
+
+  <dialog class="article-modal" aria-labelledby="modal-title">
+    <button class="modal-close" aria-label="Fechar matéria">×</button>
+    <img id="modal-image" src="" alt="">
+    <div class="modal-content"><p id="modal-category" class="section-kicker"></p><h2 id="modal-title"></h2><p id="modal-lead" class="modal-lead"></p><div id="modal-copy"></div><div id="modal-action"></div></div>
+  </dialog>
+</body>
+</html>
