@@ -17,12 +17,13 @@ O projeto não usa framework. Isso é intencional: HTML, CSS e JavaScript nativo
 
 - busca e filtros por categoria;
 - matérias completas em modal;
-- logo vetorial e favicon próprios;
+- identidade visual vetorial com monograma inspirado em foco e movimento;
 - animações acionadas durante a rolagem;
 - indicador de progresso da página e da leitura;
 - menu com seção ativa e versão mobile;
 - contador animado e parallax suave no destaque;
 - botão de voltar ao topo;
+- assinatura editorial, tempo de leitura e compartilhamento de matérias;
 - respeito à preferência de movimento reduzido;
 - formulário demonstrativo de newsletter.
 
@@ -73,6 +74,11 @@ O arquivo `script.js` está dividido em blocos numerados e comentados.
 - **dados:** o objeto `articles` concentra o conteúdo das matérias;
 - **IntersectionObserver:** detecta quando elementos e seções entram na tela;
 - **Web APIs:** `dialog`, `matchMedia`, `scrollTo` e `setInterval` criam interações sem bibliotecas.
+- **Web Share API:** abre o compartilhamento nativo no celular e usa a área de transferência como alternativa no desktop.
+
+### 4. Identidade visual em SVG
+
+A logo está em `assets/images/logo-elas-em-foco.svg`. SVG é um formato vetorial descrito por código: continua nítido em qualquer tamanho, pesa pouco e pode ser usado como logo e favicon. O símbolo combina um “e” contínuo com a ideia de lente, representando informação local colocada em foco.
 
 ### Exemplo: filtro
 
