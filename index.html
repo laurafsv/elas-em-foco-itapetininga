@@ -22,11 +22,11 @@
 
   <header class="site-header">
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
-    <div class="announcement">Informação local que fortalece, conecta e transforma.</div>
+    <div class="announcement"><span>Portal editorial de Itapetininga</span><span class="announcement-dot" aria-hidden="true"></span><span>Informação local que fortalece, conecta e transforma</span></div>
     <div class="nav-wrap container">
       <a class="brand" href="#inicio" aria-label="Elas em Foco — página inicial">
         <img class="brand-logo" src="assets/images/logo-elas-em-foco.svg" alt="" aria-hidden="true">
-        <span><strong>Elas em Foco</strong><small>Itapetininga</small></span>
+        <span><strong>Elas em Foco</strong><small>Jornalismo local</small></span>
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu">
         <span></span><span></span><span></span>
@@ -138,10 +138,24 @@
     <div class="modal-progress" aria-hidden="true"><span></span></div>
     <button class="modal-close" aria-label="Fechar matéria">×</button>
     <img id="modal-image" src="" alt="">
-    <div class="modal-content"><p id="modal-category" class="section-kicker"></p><h2 id="modal-title"></h2><p id="modal-lead" class="modal-lead"></p><div id="modal-copy"></div><div id="modal-action"></div></div>
+    <div class="modal-content">
+      <p id="modal-category" class="section-kicker"></p>
+      <h2 id="modal-title"></h2>
+      <p id="modal-lead" class="modal-lead"></p>
+      <div class="article-byline">
+        <img src="assets/images/logo-elas-em-foco.svg" alt="" aria-hidden="true">
+        <span><strong>Redação Elas em Foco</strong><small id="modal-meta"></small></span>
+        <button class="share-article" type="button" aria-label="Compartilhar esta matéria">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="m8.2 10.8 7.5-4.4M8.2 13.2l7.5 4.4"></path></svg>
+          <span>Compartilhar</span>
+        </button>
+      </div>
+      <div id="modal-copy"></div><div id="modal-action"></div>
+    </div>
   </dialog>
   <button class="back-to-top" type="button" aria-label="Voltar ao topo">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"></path></svg>
   </button>
+  <div class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
